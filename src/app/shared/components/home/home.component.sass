@@ -1,0 +1,48 @@
+$base-color: #323232
+$notch-item_color:#565656
+
+.main--container
+  background-color: #eeeeee
+  height: 100vh
+  overflow: hidden
+  display: flex
+  justify-content: center
+  align-items: center
+  .phone_frame
+    background-color: white
+    height: 80%
+    max-height: 600px
+    width: 27%
+    max-width: 320px
+    border: 15px solid $base-color
+    border-radius: 30px
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px
+    .phone_notch
+      width: 50%
+      margin: 0 auto
+      background-color: $base-color
+      height: 21px
+      border-bottom-left-radius: 10px
+      border-bottom-right-radius: 10px
+      display: flex
+      justify-content: right
+      align-items: center
+      phone_norch-microphone
+      .phone_norch-microphone
+        background-color: $notch-item_color
+        height: 7px
+        width: 30%
+        border-radius: 14px
+        margin-right: 10px
+        margin: auto
+        transform: translateX(10px)
+      .phone_norch-circle
+        background-color: $notch-item_color
+        height: 7px
+        width: 7px
+        border-radius: 100%
+        margin-right: 10px
+    .phone_content
+      height: calc(100% - 36px)
+      padding: 7px
+      border-radius: 10px
