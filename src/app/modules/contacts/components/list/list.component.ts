@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Contact } from '../../interfaces/Contact';
 
 @Component({
   selector: 'app-list',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./list.component.sass']
 })
 export class ListComponent {
+
+  public contacts: Contact[]
 
 }

@@ -1,0 +1,28 @@
+<div class="list_container">
+
+    <div class="list_container--header">
+
+      <div class="list_container--header__title">Contacts</div>
+
+      <div class="input_field">
+        <!-- <div class="input_field--title">Container</div> -->
+        <input type="text" placeholder="Search" class="input_field--input">
+
+      </div>
+    </div>
+
+    <div class="list_container--content">
+
+        <div class="contact_item" *ngFor="let contact of [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]">
+            Angel
+        </div>
+
+    </div>
+
+    <div class="list_container--add_button">
+      <button [routerLink]="'new'">
+        <i class="fa-solid fa-plus"></i>
+      </button>
+    </div>
+
+</div>
