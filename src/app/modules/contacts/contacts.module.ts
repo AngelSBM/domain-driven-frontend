@@ -4,6 +4,8 @@ import { ListComponent } from './components/list/list.component';
 import { NewComponent } from './components/new/new.component';
 import { ContactsRoutingModule } from './contacts-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ContactService } from './services/contact.service';
 
 
 
@@ -16,7 +18,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     CommonModule,
     ContactsRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
+  ],
+  providers: [
+    ContactService
   ]
 })
 export class ContactsModule { }

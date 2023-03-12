@@ -11,10 +11,10 @@
       </div>
     </div>
 
-    <div class="list_container--content">
+    <div class="list_container--content" *ngIf="contactsArrFiltered">
 
-        <div class="contact_item" *ngFor="let contact of [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]">
-            Angel
+        <div class="contact_item" *ngFor="let contact of contactsArrFiltered">
+            {{ contact.name }}
         </div>
 
     </div>

@@ -5,7 +5,8 @@
 
   <div class="new-contact_container--form">
 
-    <form action="" [formGroup]="newContactForm" (ngSubmit)="addContact()">
+    <form action="" [formGroup]="newContactForm">
+
       <div class="input_field">
         <div class="input_field--title">Name:</div>
         <input type="text" placeholder="" class="input_field--input" formControlName="name">
@@ -41,8 +42,23 @@
         </ng-container>
       </div>
 
-      <button type="submit">Add</button>
+      <div class="add-button">
+        <button (click)="addContact()">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+      </div>
+
+
+      <div class="submit-button">
+        <button>
+          Save
+        </button>
+      </div>
     </form>
+
+
+
+
   </div>
 
 </div>
