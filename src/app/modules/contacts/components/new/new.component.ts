@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from "rxjs";
+import { ContactService } from '../../services/contact.service';
 
 @Component({
   selector: 'app-new',
@@ -9,6 +11,8 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class NewComponent {
 
 
+  private newContactSub: Subscription
+
   public newContactForm: FormGroup = this.fb.group({
     name: this.fb.control('', Validators.required),
     lastname: this.fb.control(''),
@@ -17,23 +21,18 @@ export class NewComponent {
       this.createAddressFormGroup()
     ])
   });
-  // public newAddresses: FormArray;
 
-  constructor(private fb: FormBuilder) {
-
-  }
+  constructor(private fb: FormBuilder,
+              private contactService: ContactService) { }
 
 
   get getAddresses() {
-
-    // console.log(this.newContactForm.get('addresses'));
-
     return (this.newContactForm.get('addresses') as FormArray)
   }
 
   createAddressFormGroup(): FormGroup {
     return this.fb.group({
-      newAddress: this.fb.control('')
+      newAddress: this.fb.control('', Validators.required)
     })
   }
 
@@ -43,8 +42,9 @@ export class NewComponent {
 
   addContact(){
     this.getAddresses.push( this.createAddressFormGroup() )
+  }
 
-    // console.log(this.newContactForm.value);
+  saveContact(){
 
   }
 
