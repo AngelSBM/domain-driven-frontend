@@ -1,1 +1,48 @@
-<p>new works!</p>
+<div class="new-contact_container">
+  <div class="section--header">
+    <div class="section--header__title">New contact</div>
+  </div>
+
+  <div class="new-contact_container--form">
+
+    <form action="" [formGroup]="newContactForm" (ngSubmit)="addContact()">
+      <div class="input_field">
+        <div class="input_field--title">Name:</div>
+        <input type="text" placeholder="" class="input_field--input" formControlName="name">
+      </div>
+      <div class="input_field">
+        <div class="input_field--title">Lastname:</div>
+        <input type="text" placeholder="" class="input_field--input" formControlName="lastname">
+      </div>
+      <div class="input_field">
+        <div class="input_field--title">Email:</div>
+        <input type="text" placeholder="" class="input_field--input" formControlName="email">
+      </div>
+
+      <div class="sub-section--header">
+        <div class="sub-section--header__title">Add address</div>
+      </div>
+
+      <div class="" formArrayName="addresses">
+        <ng-container *ngFor="let address of getAddresses.controls; let i = index">
+
+          <div [formGroupName]="i">
+
+            <div class="input_field" >
+              <div class="input_field--title">Address {{i + 1}}:</div>
+              <input type="text" placeholder="" class="input_field--input" formControlName="newAddress">
+              <span class="input_field--remove" (click)="removeAddress(i)">
+                <i class="fa-solid fa-x"></i>
+              </span>
+            </div>
+
+          </div>
+
+        </ng-container>
+      </div>
+
+      <button type="submit">Add</button>
+    </form>
+  </div>
+
+</div>
