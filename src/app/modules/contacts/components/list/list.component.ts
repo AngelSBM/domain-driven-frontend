@@ -27,6 +27,14 @@ export class ListComponent implements OnInit, OnDestroy  {
           })
   }
 
+  searchContact(value: string){
+    if(value === ''){
+      this.contactsArrFiltered = this.contactsArrData
+    }
+    this.contactsArrFiltered = this.contactsArrFiltered
+                                   .filter(c => c.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())
+                                        || c.lastname.toLocaleLowerCase().includes(value.toLocaleLowerCase() ))
+  }
 
   ngOnDestroy(): void {
     this.contactsSub.unsubscribe()

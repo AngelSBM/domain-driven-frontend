@@ -78,7 +78,9 @@ export class NewComponent implements OnDestroy {
 
 
   ngOnDestroy(): void {
-    this.newContactSub.unsubscribe()
+    if(this.newContactSub){
+      this.newContactSub.unsubscribe()
+    }
   }
 
 

@@ -5,8 +5,12 @@
       <div class="section--header__title">Contacts</div>
 
       <div class="input_field">
-        <!-- <div class="input_field--title">Container</div> -->
-        <input type="text" placeholder="Search" class="input_field--input">
+        <input
+              type="text"
+              placeholder="Search"
+              class="input_field--input"
+              #term
+              (keyup)="searchContact(term.value)">
 
       </div>
     </div>
