@@ -1,0 +1,65 @@
+<div class="update_contact--container">
+
+  <form action="" [formGroup]="contactForm" (ngSubmit)="updateContact()">
+
+    <button class="go_back--button" type="button" [routerLink]="'/'">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+
+    <div class="input_field">
+      <div class="input_field--title">Name:</div>
+      <input type="text" placeholder="" class="input_field--input" formControlName="name">
+    </div>
+    <div class="input_field">
+      <div class="input_field--title">Lastname:</div>
+      <input type="text" placeholder="" class="input_field--input" formControlName="lastname">
+    </div>
+    <div class="input_field">
+      <div class="input_field--title">Email:</div>
+      <input type="text" placeholder="" class="input_field--input" formControlName="email">
+    </div>
+
+    <div class="sub-section--header">
+      <div class="sub-section--header__title">Add address</div>
+    </div>
+
+    <div class="" formArrayName="addresses">
+      <ng-container *ngFor="let address of getAddresses().controls; let i = index">
+
+        <div [formGroupName]="i">
+
+          <div class="input_field" >
+            <div class="input_field--title">Address {{i + 1}}:</div>
+            <input type="text" placeholder="" class="input_field--input" formControlName="address" >
+            <span class="input_field--remove" (click)="deleteAddress(i)">
+              <i class="fa-solid fa-x"></i>
+            </span>
+          </div>
+
+        </div>
+
+      </ng-container>
+    </div>
+
+    <div class="add-button">
+      <button (click)="addAddress()" type="button">
+        <i class="fa-solid fa-plus"></i>
+      </button>
+    </div>
+
+
+    <div class="buttons">
+      <button type="submit" class="update-button">
+        Update
+      </button>
+
+      <button type="button" class="delete-button" (click)="deleteContact()">
+        Delete
+      </button>
+    </div>
+
+
+  </form>
+
+
+</div>

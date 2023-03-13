@@ -15,6 +15,12 @@ export class ContactService {
   constructor(private httpClient: HttpClient,
               private toastr: ToastrService) { }
 
+
+  getContactById(contactId: number): Observable<Contact>{
+    const url = this.baseUrl + contactId;
+    return this.httpClient.get<Contact>(url);
+  }
+
   getContacts(): Observable<Contact[]>{
     const url = this.baseUrl + 'GetAll';
     return this.httpClient.get<Contact[]>(url);
@@ -26,6 +32,25 @@ export class ContactService {
                 .pipe( catchError(error => this.handleError(error)) );
   }
 
+  updateContact(body: Object): Observable<Contact> {
+    const url = this.baseUrl + 'Update';
+    return this.httpClient.put<Contact>(url, body)
+                .pipe( catchError(error => this.handleError(error)) );
+  }
+
+  deleteContact(contactId: number): Observable<{ message: string }> {
+    const url = `${this.baseUrl}Delete/${contactId}`;
+    return this.httpClient.delete<{ message: string }>(url)
+                .pipe( catchError(error => this.handleError(error)) );
+  }
+
+  deleteAddress(addressId: number): Observable<{ message: string }> {
+    const url = `${this.baseUrl}DeleteAddress/${addressId}`;
+    return this.httpClient.delete<{ message: string }>(url)
+                .pipe( catchError(error => this.handleError(error)) );
+  }
+
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred.
@@ -36,7 +61,6 @@ export class ContactService {
         this.toastr.error(error, 'Error')
       });
     }
-    // Return an observable with a user-facing error message.
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 

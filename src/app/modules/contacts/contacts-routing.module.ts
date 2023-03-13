@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { Route, RouterModule } from "@angular/router";
 import { ListComponent } from "./components/list/list.component";
 import { NewComponent } from "./components/new/new.component";
+import { UpdateComponent } from "./components/update/update.component";
 
 const routes: Route[] = [
   {
@@ -11,6 +12,10 @@ const routes: Route[] = [
   {
     path: 'new',
     component: NewComponent
+  },
+  {
+    path: 'detail/:id',
+    component: UpdateComponent
   }
 ]
 

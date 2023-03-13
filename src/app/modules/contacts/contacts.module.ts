@@ -9,12 +9,14 @@ import { ContactService } from './services/contact.service';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UpdateComponent } from './components/update/update.component';
 
 
 @NgModule({
   declarations: [
     ListComponent,
-    NewComponent
+    NewComponent,
+    UpdateComponent
   ],
   imports: [
     CommonModule,

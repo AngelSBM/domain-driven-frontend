@@ -13,7 +13,7 @@
 
     <div class="list_container--content" *ngIf="contactsArrFiltered">
 
-        <div class="contact_item" *ngFor="let contact of contactsArrFiltered">
+        <div class="contact_item" *ngFor="let contact of contactsArrFiltered" [routerLink]="'detail/' + contact.id">
             {{ contact.name }}
         </div>
 

@@ -7,6 +7,11 @@
 
     <form action="" [formGroup]="newContactForm" (ngSubmit)="saveContact()">
 
+      <button class="go_back--button" type="button" [routerLink]="'/'">
+        <i class="fa-solid fa-arrow-left"></i>
+      </button>
+
+
       <div class="input_field">
         <div class="input_field--title">Name:</div>
         <input type="text" placeholder="" class="input_field--input" formControlName="name">
@@ -43,7 +48,7 @@
       </div>
 
       <div class="add-button">
-        <button (click)="addContact()">
+        <button (click)="addAddress()" type="button">
           <i class="fa-solid fa-plus"></i>
         </button>
       </div>
@@ -54,10 +59,9 @@
           Save
         </button>
       </div>
+
+
     </form>
-
-
-
 
   </div>
 

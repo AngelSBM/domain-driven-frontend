@@ -43,7 +43,7 @@ export class NewComponent implements OnDestroy {
     this.getAddresses.removeAt(addressIndex)
   }
 
-  addContact(){
+  addAddress(){
     this.getAddresses.push( this.createAddressFormGroup() )
   }
 
