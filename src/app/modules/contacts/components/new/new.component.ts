@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subscription } from "rxjs";
+import { Subscription, catchError } from "rxjs";
 import { ContactService } from '../../services/contact.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new',
   templateUrl: './new.component.html',
   styleUrls: ['./new.component.sass']
 })
-export class NewComponent {
+export class NewComponent implements OnDestroy {
 
   private newContactSub: Subscription
 
@@ -24,7 +25,8 @@ export class NewComponent {
 
   constructor(private fb: FormBuilder,
               private contactService: ContactService,
-              private toastr: ToastrService) { }
+              private toastr: ToastrService,
+              private router: Router) { }
 
 
   get getAddresses() {
@@ -52,22 +54,31 @@ export class NewComponent {
       return
     }
 
+    const newAddresses = this.getAddresses.value.map((address: { newAddress: string }) => { return { addressLine: address.newAddress } } )
+
     const newContact = {
       name: this.newContactForm.controls['name'].value,
       lastname: this.newContactForm.controls['lastname'].value,
       email: this.newContactForm.controls['email'].value,
-      newAddresses: this.getAddresses.value
+      newAddresses
     }
-
 
 
     this.newContactSub =
     this.contactService
     .createContact(newContact)
     .subscribe(createdContact => {
-            this.toastr.success(`${newContact.name} is now in your contact list.`, 'Contact created');
+            this.toastr.success(`${createdContact.name} is now in your contact list.`, 'Contact created');
+            setTimeout(() => {
+              this.router.navigate(['/'])
+            }, 3000);
           })
 
+  }
+
+
+  ngOnDestroy(): void {
+    this.newContactSub.unsubscribe()
   }
 
 
