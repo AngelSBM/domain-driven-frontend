@@ -6,7 +6,9 @@ import { ContactsRoutingModule } from './contacts-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ContactService } from './services/contact.service';
-
+import { ToastrModule, ToastrService } from 'ngx-toastr';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -19,10 +21,12 @@ import { ContactService } from './services/contact.service';
     ContactsRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   providers: [
-    ContactService
+    ContactService,
+
   ]
 })
 export class ContactsModule { }

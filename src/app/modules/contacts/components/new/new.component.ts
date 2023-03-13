@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from "rxjs";
 import { ContactService } from '../../services/contact.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-new',
@@ -9,7 +10,6 @@ import { ContactService } from '../../services/contact.service';
   styleUrls: ['./new.component.sass']
 })
 export class NewComponent {
-
 
   private newContactSub: Subscription
 
@@ -23,7 +23,8 @@ export class NewComponent {
   });
 
   constructor(private fb: FormBuilder,
-              private contactService: ContactService) { }
+              private contactService: ContactService,
+              private toastr: ToastrService) { }
 
 
   get getAddresses() {
@@ -45,6 +46,27 @@ export class NewComponent {
   }
 
   saveContact(){
+
+    if(!this.newContactForm.valid){
+      this.toastr.error('Some inputs are empty.', 'Required fields');
+      return
+    }
+
+    const newContact = {
+      name: this.newContactForm.controls['name'].value,
+      lastname: this.newContactForm.controls['lastname'].value,
+      email: this.newContactForm.controls['email'].value,
+      newAddresses: this.getAddresses.value
+    }
+
+
+
+    this.newContactSub =
+    this.contactService
+    .createContact(newContact)
+    .subscribe(createdContact => {
+            this.toastr.success(`${newContact.name} is now in your contact list.`, 'Contact created');
+          })
 
   }
 

@@ -19,7 +19,7 @@ export class ContactService {
   }
 
   createContact(body: Object): Observable<Contact> {
-    const url = this.baseUrl + 'GetAll';
+    const url = this.baseUrl + 'Create';
     return this.httpClient.post<Contact>(url, body);
   }
 
